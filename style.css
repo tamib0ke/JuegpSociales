@@ -1,0 +1,273 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    margin: 0;
+    overflow: hidden;
+    color: #fff;
+}
+
+#game-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    text-align: center;
+    max-width: 1000px;
+    width: 90%;
+    min-height: 650px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: #ffeb3b;
+    margin-bottom: 20px;
+    font-size: 2.8em;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.7);
+}
+
+/* --- Pantalla de Inicio --- */
+#start-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: inherit;
+}
+#start-screen p {
+    font-size: 1.3em;
+    margin-bottom: 25px;
+    color: #e0e0e0;
+}
+.topic-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.topic-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+.topic-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Pantalla de Juego --- */
+#game-screen {
+    display: none;
+    flex-grow: 1;
+    width: 100%;
+    position: relative;
+}
+
+#game-board-svg {
+    width: 100%;
+    height: 100%;
+    min-height: 550px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    border: 2px solid #ffeb3b;
+    box-shadow: inset 0 0 15px rgba(255, 235, 59, 0.5);
+}
+
+/* Estilos de los avatares hexagonales - MEJORADOS */
+.host-hexagon {
+    fill: url(#host-gradient); /* Degradado Azul Pastel */
+    stroke: #66CCFF; /* Azul más brillante */
+    stroke-width: 5; /* Borde más grueso */
+    filter: drop-shadow(0 0 8px rgba(102, 204, 255, 0.7)); /* Sombra suave */
+}
+.player-hexagon {
+    fill: url(#player-gradient); /* Degradado Morado */
+    stroke: #DDAAEE; /* Morado más brillante */
+    stroke-width: 5; /* Borde más grueso */
+    filter: drop-shadow(0 0 8px rgba(221, 170, 238, 0.7)); /* Sombra suave */
+}
+.avatar-eye {
+    fill: #333;
+}
+.host-mic {
+    fill: #546e7a;
+    stroke: #333;
+    stroke-width: 1;
+}
+
+/* Puntos SVG */
+.point-circle {
+    fill: #424242;
+    stroke: #bdbdbd;
+    stroke-width: 1;
+}
+.point-circle.earned {
+    fill: #4caf50;
+}
+#points-text {
+    fill: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+/* Temporizador */
+#timer-text {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 38px;
+    fill: #ffeb3b;
+    text-anchor: middle;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 235, 59, 0.8);
+    transform: translateY(-5px); /* Ajuste de posición */
+}
+
+
+/* Comodines */
+.comodin-button {
+    position: absolute;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    width: 110px;
+}
+.comodin-button:disabled {
+    background-color: #616161;
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+.comodin-button:hover:not(:disabled) {
+    background-color: #e68900;
+    transform: translateY(-2px);
+}
+.comodin-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+#comodin-pista { top: 100px; left: 20px; }
+#comodin-50-50 { top: 160px; left: 20px; }
+#comodin-cambio { top: 220px; left: 20px; }
+
+/* Pregunta y Opciones SVG */
+#question-box {
+    fill: #424242;
+    stroke: #bdbdbd;
+    stroke-width: 2;
+}
+#question-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    fill: white;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+.option-box {
+    fill: #616161;
+    stroke: #bdbdbd;
+    stroke-width: 2;
+    cursor: pointer;
+    transition: fill 0.2s ease;
+}
+.option-box:hover {
+    fill: #757575;
+}
+.option-box.selected {
+    fill: #2196f3;
+}
+.option-box.correct {
+    fill: #4caf50;
+}
+.option-box.incorrect {
+    fill: #f44336;
+}
+.option-box.hidden {
+    visibility: hidden;
+    pointer-events: none;
+}
+.option-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    fill: white;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    user-select: none;
+}
+
+/* Burbuja de pista - MEJORADA */
+#hint-bubble-path {
+    fill: #fff;
+    stroke: #ffeb3b;
+    stroke-width: 2;
+    display: none;
+    /* Ajustes para más espacio y mejor forma */
+    d: path("M360 170 C390 150, 560 150, 560 220 C560 290, 390 290, 360 270 L350 280 Z");
+}
+#hint-text-content {
+    font-family: 'Verdana', sans-serif;
+    font-size: 14px; /* Un poco más pequeño para caber */
+    fill: #333;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    display: none;
+    /* Centrado dentro de la nueva burbuja */
+    x: 460;
+    y: 220;
+    width: 180px; /* Ancho para el texto */
+    word-wrap: break-word; /* Para que el texto salte de línea */
+}
+
+/* --- Pantalla de Fin de Juego --- */
+#game-over-screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: inherit;
+}
+#game-over-screen h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+#game-over-screen p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+#game-over-screen button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+#game-over-screen button:hover {
+    background-color: #388e3c;
+    transform: translateY(-3px);
+}

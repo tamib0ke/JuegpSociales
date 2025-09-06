@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quién Quiere Ser Millonario? - Costa Rica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>¿Quién Quiere Ser Millonario?</h1>
+
+        <div id="start-screen">
+            <p>Selecciona un tema para empezar:</p>
+            <div id="topic-buttons">
+                </div>
+        </div>
+
+        <div id="game-screen">
+            <button id="comodin-pista" class="comodin-button">Pista</button>
+            <button id="comodin-50-50" class="comodin-button">50/50</button>
+            <button id="comodin-cambio" class="comodin-button">Cambio</button>
+
+            <svg id="game-board-svg" viewBox="0 0 900 600">
+                <defs>
+                    <linearGradient id="host-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#A0C4FF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#8eacdd;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="player-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#C77DFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#9B5DE5;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+
+                <g id="points-display">
+                    <circle cx="315" cy="30" r="10" class="point-circle"></circle>
+                    <circle cx="345" cy="30" r="10" class="point-circle"></circle>
+                    <circle cx="375" cy="30" r="10" class="point-circle"></circle>
+                    <circle cx="405" cy="30" r="10" class="point-circle"></circle>
+                    <circle cx="435" cy="30" r="10" class="point-circle"></circle>
+                    <circle cx="465" cy="30" r="10" class="point-circle"></circle>
+                    <circle cx="495" cy="30" r="10" class="point-circle"></circle>
+                    <circle cx="525" cy="30" r="10" class="point-circle"></circle>
+                    <circle cx="555" cy="30" r="10" class="point-circle"></circle>
+                    <circle cx="585" cy="30" r="10" class="point-circle"></circle>
+                </g>
+                <text id="points-text" x="450" y="55">Puntos</text>
+
+                <text id="timer-text" x="450" y="100">45</text>
+
+                <g id="host-character">
+                    <polygon points="220,200 280,180 340,200 340,280 280,300 220,280" class="host-hexagon"></polygon>
+                    <circle cx="270" cy="230" r="3" class="avatar-eye"></circle>
+                    <circle cx="290" cy="230" r="3" class="avatar-eye"></circle>
+                    <rect x="330" y="220" width="10" height="40" rx="5" ry="5" class="host-mic"></rect>
+                    <circle cx="335" cy="215" r="8" class="host-mic"></circle>
+                </g>
+
+                <g id="player-character">
+                    <polygon points="560,200 620,180 680,200 680,280 620,300 560,280" class="player-hexagon"></polygon>
+                    <circle cx="610" cy="230" r="3" class="avatar-eye"></circle>
+                    <circle cx="630" cy="230" r="3" class="avatar-eye"></circle>
+                </g>
+                
+                <path id="hint-bubble-path" d="M380 200 C410 180, 530 180, 530 230 C530 280, 410 280, 380 260 L370 270 Z"></path>
+                <text id="hint-text-content" x="455" y="230"></text>
+
+                <rect id="question-box" x="100" y="320" width="700" height="70" rx="10" ry="10"></rect>
+                <text id="question-text" x="450" y="355"></text>
+
+                <rect id="option-A-box" data-option="A" x="100" y="420" width="340" height="60" rx="10" ry="10" class="option-box"></rect>
+                <text id="option-A-text" x="270" y="450" class="option-text"></text>
+
+                <rect id="option-B-box" data-option="B" x="460" y="420" width="340" height="60" rx="10" ry="10" class="option-box"></rect>
+                <text id="option-B-text" x="630" y="450" class="option-text"></text>
+
+                <rect id="option-C-box" data-option="C" x="100" y="500" width="340" height="60" rx="10" ry="10" class="option-box"></rect>
+                <text id="option-C-text" x="270" y="530" class="option-text"></text>
+
+                <rect id="option-D-box" data-option="D" x="460" y="500" width="340" height="60" rx="10" ry="10" class="option-box"></rect>
+                <text id="option-D-text" x="630" y="530" class="option-text"></text>
+            </svg>
+        </div>
+
+        <div id="game-over-screen">
+            <h2 id="game-over-title">¡Juego Terminado!</h2>
+            <p id="game-over-message"></p>
+            <button id="play-again-btn">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
