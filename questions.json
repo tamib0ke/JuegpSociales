@@ -1,0 +1,250 @@
+{
+  "Guerra Civil": [
+    {
+      "enunciado": "¿Cuál fue el conflicto armado en Costa Rica en 1948?",
+      "opciones": ["Guerra del 48", "Revolución de Octubre", "Guerra de Limón", "Conflicto de Guanacaste"],
+      "respuestaCorrecta": "Guerra del 48",
+      "pista": "También se le conoce como la Guerra Civil de 1948."
+    },
+    {
+      "enunciado": "¿Quién lideró las fuerzas del Ejército de Liberación Nacional?",
+      "opciones": ["Rafael Ángel Calderón Guardia", "José Figueres Ferrer", "Teodoro Picado Michalski", "Jorge Volio Jiménez"],
+      "respuestaCorrecta": "José Figueres Ferrer",
+      "pista": "Fue conocido como 'Don Pepe'."
+    },
+    {
+      "enunciado": "¿Qué garantías sociales fueron defendidas en 1948?",
+      "opciones": ["Reforma Agraria", "Código de Trabajo y Seguro Social", "Derecho al voto femenino", "Libertad de prensa"],
+      "respuestaCorrecta": "Código de Trabajo y Seguro Social",
+      "pista": "Beneficios para los trabajadores y acceso a servicios médicos."
+    },
+    {
+      "enunciado": "¿Qué importante decisión sobre las fuerzas armadas se tomó tras la guerra?",
+      "opciones": ["Aumentar el ejército", "Modernizar su armamento", "Abolir el ejército", "Crear una fuerza aérea"],
+      "respuestaCorrecta": "Abolir el ejército",
+      "pista": "Es uno de los hechos más distintivos de Costa Rica."
+    },
+    {
+      "enunciado": "La Junta Fundadora de la Segunda República fue presidida por:",
+      "opciones": ["Otilio Ulate", "José Figueres Ferrer", "León Cortés Castro", "Santos León Herrera"],
+      "respuestaCorrecta": "José Figueres Ferrer",
+      "pista": "El mismo líder del bando ganador."
+    },
+    {
+      "enunciado": "¿En qué año se redactó la Constitución que rige actualmente, como consecuencia de la guerra?",
+      "opciones": ["1948", "1949", "1950", "1953"],
+      "respuestaCorrecta": "1949",
+      "pista": "Un año después del conflicto armado."
+    },
+    {
+      "enunciado": "¿Qué derecho fundamental se otorgó a las mujeres como resultado de la nueva constitución?",
+      "opciones": ["Derecho a la educación", "Derecho al trabajo", "Derecho al voto", "Derecho a la propiedad"],
+      "respuestaCorrecta": "Derecho al voto",
+      "pista": "Un gran avance para la igualdad de género."
+    },
+    {
+      "enunciado": "El bando perdedor estaba asociado a la figura de:",
+      "opciones": ["José Figueres Ferrer", "Rafael Ángel Calderón Guardia", "Otilio Ulate Blanco", "Alberto Martén"],
+      "respuestaCorrecta": "Rafael Ángel Calderón Guardia",
+      "pista": "Fue presidente antes de Teodoro Picado."
+    },
+    {
+      "enunciado": "¿Cuál fue el principal detonante de la Guerra Civil?",
+      "opciones": ["Una crisis económica", "La anulación de las elecciones", "La firma de un tratado", "Una invasión extranjera"],
+      "respuestaCorrecta": "La anulación de las elecciones",
+      "pista": "Relacionado con las elecciones presidenciales de ese año."
+    },
+    {
+      "enunciado": "¿Cuánto duró aproximadamente el conflicto armado?",
+      "opciones": ["Una semana", "44 días", "Seis meses", "Un año"],
+      "respuestaCorrecta": "44 días",
+      "pista": "Fue un conflicto relativamente corto pero intenso."
+    }
+  ],
+  "Garantías Sociales": [
+    {
+      "enunciado": "¿En qué año se promulgaron las Garantías Sociales?",
+      "opciones": ["1920", "1943", "1948", "1953"],
+      "respuestaCorrecta": "1943",
+      "pista": "Fue durante el gobierno de Rafael Ángel Calderón Guardia."
+    },
+    {
+      "enunciado": "¿Cuál institución administra el Seguro Social?",
+      "opciones": ["Ministerio de Salud", "INS", "CCSS", "PANI"],
+      "respuestaCorrecta": "CCSS",
+      "pista": "Es conocida popularmente como 'La Caja'."
+    },
+    {
+      "enunciado": "¿Qué documento legal estableció las Garantías Sociales?",
+      "opciones": ["Constitución de 1871", "El Código de Trabajo", "Constitución de 1949", "Tratado de Límites"],
+      "respuestaCorrecta": "El Código de Trabajo",
+      "pista": "Es el conjunto de leyes que regulan las relaciones laborales."
+    },
+    {
+      "enunciado": "¿Qué presidente impulsó la creación de las Garantías Sociales?",
+      "opciones": ["León Cortés Castro", "José Figueres Ferrer", "Rafael Ángel Calderón Guardia", "Teodoro Picado"],
+      "respuestaCorrecta": "Rafael Ángel Calderón Guardia",
+      "pista": "Su gobierno es recordado por esta reforma."
+    },
+    {
+      "enunciado": "¿Qué líder político apoyó a Calderón Guardia para aprobar las reformas?",
+      "opciones": ["José Figueres Ferrer", "Manuel Mora Valverde", "Otilio Ulate", "Jorge Volio"],
+      "respuestaCorrecta": "Manuel Mora Valverde",
+      "pista": "Era el líder del Partido Comunista."
+    },
+    {
+      "enunciado": "Las Garantías Sociales se incorporaron a la:",
+      "opciones": ["Declaración de Independencia", "Ley de Educación", "Constitución Política", "Reforma Agraria"],
+      "respuestaCorrecta": "Constitución Política",
+      "pista": "Para darles el máximo rango legal."
+    },
+    {
+      "enunciado": "¿Qué derecho NO forma parte directa de las Garantías Sociales?",
+      "opciones": ["Seguro de enfermedad", "Jornada laboral de 8 horas", "Libertad de expresión", "Salario mínimo"],
+      "respuestaCorrecta": "Libertad de expresión",
+      "pista": "Este es un derecho civil, no social."
+    },
+    {
+      "enunciado": "¿Qué sector de la sociedad se opuso inicialmente a estas reformas?",
+      "opciones": ["Los trabajadores", "La Iglesia Católica", "Los grandes cafetaleros", "Los pequeños agricultores"],
+      "respuestaCorrecta": "Los grandes cafetaleros",
+      "pista": "Temían que las reformas afectaran sus ganancias."
+    },
+    {
+      "enunciado": "¿Qué universidad fue fundada durante el mismo gobierno reformista?",
+      "opciones": ["TEC", "UNA", "UCR", "UNED"],
+      "respuestaCorrecta": "UCR",
+      "pista": "La Universidad de Costa Rica."
+    },
+    {
+      "enunciado": "El objetivo principal de las Garantías era buscar una mayor:",
+      "opciones": ["Riqueza nacional", "Justicia social", "Expansión territorial", "Influencia militar"],
+      "respuestaCorrecta": "Justicia social",
+      "pista": "Reducir la desigualdad entre ricos y pobres."
+    }
+  ],
+  "Estado Liberal": [
+    {
+      "enunciado": "¿Cuál fue una característica principal del Estado Liberal?",
+      "opciones": ["Intervención estatal en economía", "Desarrollo de la educación pública", "Creación del Seguro Social", "Protección laboral"],
+      "respuestaCorrecta": "Desarrollo de la educación pública",
+      "pista": "Se buscaba formar ciudadanos para la república."
+    },
+    {
+      "enunciado": "¿Presidente importante del Estado Liberal que impulsó la educación?",
+      "opciones": ["Juan Rafael Mora Porras", "Tomás Guardia Gutiérrez", "Ricardo Jiménez Oreamuno", "Mauro Fernández Acuña"],
+      "respuestaCorrecta": "Mauro Fernández Acuña",
+      "pista": "Su reforma educativa marcó un hito."
+    },
+    {
+      "enunciado": "¿Producto agrícola base de la economía durante el Estado Liberal?",
+      "opciones": ["Caña de azúcar", "Banano", "Café", "Piña"],
+      "respuestaCorrecta": "Café",
+      "pista": "Nuestro 'grano de oro'."
+    },
+    {
+      "enunciado": "La construcción del Ferrocarril al Atlántico fue impulsada por el presidente:",
+      "opciones": ["Tomás Guardia", "Juan Rafael Mora", "Próspero Fernández", "Bernardo Soto"],
+      "respuestaCorrecta": "Tomás Guardia",
+      "pista": "Su dictadura modernizó el país."
+    },
+    {
+      "enunciado": "El lema del Estado Liberal era:",
+      "opciones": ["'Paz, Justicia y Libertad'", "'Orden y Progreso'", "'Vivan siempre el trabajo y la paz'", "'Dios, Patria y Libertad'"],
+      "respuestaCorrecta": "'Orden y Progreso'",
+      "pista": "Buscaban modernizar el país bajo un control estricto."
+    },
+    {
+      "enunciado": "¿Qué sector fue el más beneficiado con las políticas liberales?",
+      "opciones": ["Campesinos", "Oligarquía cafetalera", "Artesanos", "Indígenas"],
+      "respuestaCorrecta": "Oligarquía cafetalera",
+      "pista": "Un pequeño grupo de familias con mucho poder."
+    },
+    {
+      "enunciado": "El Estado Liberal se caracterizó por la separación entre:",
+      "opciones": ["El Estado y la economía", "La Iglesia y el Estado", "El Presidente y los ministros", "El campo y la ciudad"],
+      "respuestaCorrecta": "La Iglesia y el Estado",
+      "pista": "Se crearon el Registro Civil y los cementerios laicos."
+    },
+    {
+      "enunciado": "¿Qué edificio icónico de San José se construyó como símbolo del progreso liberal?",
+      "opciones": ["El Museo Nacional", "El Teatro Nacional", "El Estadio Nacional", "La Catedral Metropolitana"],
+      "respuestaCorrecta": "El Teatro Nacional",
+      "pista": "Financiado con un impuesto al café."
+    },
+    {
+      "enunciado": "El fin del Estado Liberal da paso al surgimiento del Estado:",
+      "opciones": ["Benefactor", "Socialista", "Feudal", "Colonial"],
+      "respuestaCorrecta": "Benefactor",
+      "pista": "Marcado por las Garantías Sociales de los años 40."
+    },
+    {
+      "enunciado": "¿Qué contrato permitió la llegada de la United Fruit Company?",
+      "opciones": ["Contrato Soto-Keith", "Tratado Cañas-Jerez", "Contrato Chamorro-Bryan", "Pacto de la Embajada"],
+      "respuestaCorrecta": "Contrato Soto-Keith",
+      "pista": "Relacionado con deudas del ferrocarril."
+    }
+  ],
+  "Cultura General": [
+    {
+      "enunciado": "¿Cuál es el ave nacional de Costa Rica?",
+      "opciones": ["El colibrí", "El quetzal", "El yigüirro", "El tucán"],
+      "respuestaCorrecta": "El yigüirro",
+      "pista": "Es conocido por su canto antes de las lluvias."
+    },
+    {
+      "enunciado": "¿En qué provincia se encuentra el Volcán Arenal?",
+      "opciones": ["San José", "Guanacaste", "Alajuela", "Limón"],
+      "respuestaCorrecta": "Alajuela",
+      "pista": "Es una provincia con muchos volcanes activos."
+    },
+    {
+      "enunciado": "¿Qué océano baña la costa este de Costa Rica?",
+      "opciones": ["Océano Pacífico", "Océano Atlántico", "Mar Caribe", "Golfo de México"],
+      "respuestaCorrecta": "Mar Caribe",
+      "pista": "Es la costa donde se ubica la provincia de Limón."
+    },
+    {
+      "enunciado": "¿Cuál es el significado de la frase 'Pura Vida'?",
+      "opciones": ["Una vida de lujos", "Un saludo y un estado de ánimo positivo", "Solo se vive una vez", "Buena suerte"],
+      "respuestaCorrecta": "Un saludo y un estado de ánimo positivo",
+      "pista": "Es la frase más representativa del país."
+    },
+    {
+      "enunciado": "El platillo tradicional conocido como 'Gallo Pinto' combina principalmente:",
+      "opciones": ["Maíz y pollo", "Arroz y frijoles", "Papas y carne", "Yuca y pescado"],
+      "respuestaCorrecta": "Arroz y frijoles",
+      "pista": "Es el desayuno típico por excelencia."
+    },
+    {
+      "enunciado": "¿Cuál es la flor nacional de Costa Rica?",
+      "opciones": ["La orquídea", "La rosa", "La guaria morada", "El girasol"],
+      "respuestaCorrecta": "La guaria morada",
+      "pista": "Es una especie de orquídea."
+    },
+    {
+      "enunciado": "¿Qué presidente aparece en el billete de 10,000 colones?",
+      "opciones": ["José Figueres Ferrer", "Juan Rafael Mora", "Rafael Ángel Calderón Guardia", "Cleto González Víquez"],
+      "respuestaCorrecta": "José Figueres Ferrer",
+      "pista": "El líder de la Guerra Civil del 48."
+    },
+    {
+      "enunciado": "¿En qué fecha se celebra la Anexión del Partido de Nicoya a Costa Rica?",
+      "opciones": ["15 de setiembre", "12 de octubre", "25 de julio", "1 de mayo"],
+      "respuestaCorrecta": "25 de julio",
+      "pista": "'De la patria por nuestra voluntad'."
+    },
+    {
+      "enunciado": "El punto más alto de Costa Rica es el:",
+      "opciones": ["Volcán Irazú", "Cerro de la Muerte", "Cerro Chirripó", "Volcán Turrialba"],
+      "respuestaCorrecta": "Cerro Chirripó",
+      "pista": "Se encuentra en la Cordillera de Talamanca."
+    },
+    {
+      "enunciado": "¿Cuál es el Símbolo Nacional del Trabajo en Costa Rica?",
+      "opciones": ["El machete", "El trapiche", "La carreta típica", "El yugo"],
+      "respuestaCorrecta": "La carreta típica",
+      "pista": "Famosa por sus decoraciones coloridas."
+    }
+  ]
+}

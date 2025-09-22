@@ -3,93 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Quién Quiere Ser Millonario? - Costa Rica</title>
+    <title>¿Quién Quiere Ser Millonario? - Sociales</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-container">
-        <h1>¿Quién Quiere Ser Millonario?</h1>
 
-        <div id="start-screen">
-            <p>Selecciona un tema para empezar:</p>
-            <div id="topic-buttons">
+    <div id="instructions-screen" class="screen">
+        <div class="content-box">
+            <div class="instructions-text">
+                <p class="subtitle">Estudios Sociales</p>
+                <h1>¿Quién quiere ser millonario?</h1>
+                <p class="description">
+                    En este juego podrás elegir un tema y responder 10 preguntas sobre él.
+                    Cada respuesta correcta te hará ganar puntos. ¡Demuestra tus
+                    conocimientos y llega lo más lejos posible!
+                </p>
+                <div class="info-row">
+                    <p><strong>Tiempo Estimado:</strong> 5 Min</p>
+                    <p><strong>Record:</strong> 30 Puntos</p>
                 </div>
-        </div>
-
-        <div id="game-screen">
-            <button id="comodin-pista" class="comodin-button">Pista</button>
-            <button id="comodin-50-50" class="comodin-button">50/50</button>
-            <button id="comodin-cambio" class="comodin-button">Cambio</button>
-
-            <svg id="game-board-svg" viewBox="0 0 900 600">
-                <defs>
-                    <linearGradient id="host-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#A0C4FF;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#8eacdd;stop-opacity:1" />
-                    </linearGradient>
-                    <linearGradient id="player-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#C77DFF;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#9B5DE5;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-
-                <g id="points-display">
-                    <circle cx="315" cy="30" r="10" class="point-circle"></circle>
-                    <circle cx="345" cy="30" r="10" class="point-circle"></circle>
-                    <circle cx="375" cy="30" r="10" class="point-circle"></circle>
-                    <circle cx="405" cy="30" r="10" class="point-circle"></circle>
-                    <circle cx="435" cy="30" r="10" class="point-circle"></circle>
-                    <circle cx="465" cy="30" r="10" class="point-circle"></circle>
-                    <circle cx="495" cy="30" r="10" class="point-circle"></circle>
-                    <circle cx="525" cy="30" r="10" class="point-circle"></circle>
-                    <circle cx="555" cy="30" r="10" class="point-circle"></circle>
-                    <circle cx="585" cy="30" r="10" class="point-circle"></circle>
-                </g>
-                <text id="points-text" x="450" y="55">Puntos</text>
-
-                <text id="timer-text" x="450" y="100">45</text>
-
-                <g id="host-character">
-                    <polygon points="220,200 280,180 340,200 340,280 280,300 220,280" class="host-hexagon"></polygon>
-                    <circle cx="270" cy="230" r="3" class="avatar-eye"></circle>
-                    <circle cx="290" cy="230" r="3" class="avatar-eye"></circle>
-                    <rect x="330" y="220" width="10" height="40" rx="5" ry="5" class="host-mic"></rect>
-                    <circle cx="335" cy="215" r="8" class="host-mic"></circle>
-                </g>
-
-                <g id="player-character">
-                    <polygon points="560,200 620,180 680,200 680,280 620,300 560,280" class="player-hexagon"></polygon>
-                    <circle cx="610" cy="230" r="3" class="avatar-eye"></circle>
-                    <circle cx="630" cy="230" r="3" class="avatar-eye"></circle>
-                </g>
-                
-                <path id="hint-bubble-path" d="M380 200 C410 180, 530 180, 530 230 C530 280, 410 280, 380 260 L370 270 Z"></path>
-                <text id="hint-text-content" x="455" y="230"></text>
-
-                <rect id="question-box" x="100" y="320" width="700" height="70" rx="10" ry="10"></rect>
-                <text id="question-text" x="450" y="355"></text>
-
-                <rect id="option-A-box" data-option="A" x="100" y="420" width="340" height="60" rx="10" ry="10" class="option-box"></rect>
-                <text id="option-A-text" x="270" y="450" class="option-text"></text>
-
-                <rect id="option-B-box" data-option="B" x="460" y="420" width="340" height="60" rx="10" ry="10" class="option-box"></rect>
-                <text id="option-B-text" x="630" y="450" class="option-text"></text>
-
-                <rect id="option-C-box" data-option="C" x="100" y="500" width="340" height="60" rx="10" ry="10" class="option-box"></rect>
-                <text id="option-C-text" x="270" y="530" class="option-text"></text>
-
-                <rect id="option-D-box" data-option="D" x="460" y="500" width="340" height="60" rx="10" ry="10" class="option-box"></rect>
-                <text id="option-D-text" x="630" y="530" class="option-text"></text>
-            </svg>
-        </div>
-
-        <div id="game-over-screen">
-            <h2 id="game-over-title">¡Juego Terminado!</h2>
-            <p id="game-over-message"></p>
-            <button id="play-again-btn">Jugar de Nuevo</button>
+                <button id="start-game-btn">Empezar</button>
+            </div>
+            <div class="instructions-image"> <img src="imgs/Rectangle 124.png" ></div>
         </div>
     </div>
 
+    <div id="topic-selection-screen" class="screen">
+        <div class="content-box">
+            <div class="topic-header">
+                 <h1>¿Quién quiere ser millonario?</h1>
+                 <p class="description">Elige un tema para jugar!</p>
+            </div>
+             <div id="topic-buttons"></div>
+        </div>
+    </div>
+
+    <div id="game-screen" class="screen">
+        <div class="game-container-central">
+            <div class="game-lifelines">
+                <button id="comodin-pista" class="comodin-button">Pista</button>
+                <button id="comodin-50-50" class="comodin-button">50/50</button>
+            </div>
+            <div class="game-top-info">
+                <div id="points-display"></div>
+                <p class="timer-label">Tiempo</p>
+                <p id="timer-text">45</p>
+            </div>
+            <div class="game-avatars">
+                <div class="avatar-wrapper">
+                    <svg class="hexagon-avatar hexagon-blue" viewBox="0 0 70 75">
+                        <polygon class="hexagon-fill" points="35,0 70,18.75 70,56.25 35,75 0,56.25 0,18.75" />
+                        <circle class="eye-outer" cx="25" cy="35" r="7"/><circle class="eye-inner" cx="25" cy="35" r="3"/>
+                        <circle class="eye-outer" cx="45" cy="35" r="7"/><circle class="eye-inner" cx="45" cy="35" r="3"/>
+                    </svg>
+                    <div id="hint-bubble" class="speech-bubble"></div>
+                </div>
+                <svg class="hexagon-avatar hexagon-purple" viewBox="0 0 70 75">
+                    <polygon class="hexagon-fill" points="35,0 70,18.75 70,56.25 35,75 0,56.25 0,18.75" />
+                    <circle class="eye-outer" cx="25" cy="35" r="7"/><circle class="eye-inner" cx="25" cy="35" r="3"/>
+                    <circle class="eye-outer" cx="45" cy="35" r="7"/><circle class="eye-inner" cx="45" cy="35" r="3"/>
+                </svg>
+            </div>
+            <div class="main-question-container">
+                <p class="subtitle">Selecciona una opción</p>
+                <h2 id="question-text"></h2>
+                <div id="options-container">
+                     <button class="option-box" data-option="A"><span class="option-prefix">A.</span><span class="option-text"></span></button>
+                     <button class="option-box" data-option="B"><span class="option-prefix">B.</span><span class="option-text"></span></button>
+                     <button class="option-box" data-option="C"><span class="option-prefix">C.</span><span class="option-text"></span></button>
+                     <button class="option-box" data-option="D"><span class="option-prefix">D.</span><span class="option-text"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-over-screen" class="screen">
+    <div class="game-over-container">
+        <div class="game-over-header-tab">
+            <p>¿Quién quiere ser millonario?</p>
+        </div>
+        <div class="game-over-body">
+            <h1 id="game-over-title">¡Juego completado!</h1>
+            <div class="game-over-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Puntos</span>
+                    <span id="final-score" class="stat-value"></span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Tiempo</span>
+                    <span id="final-time" class="stat-value"></span>
+                </div>
+            </div>
+            <div class="game-over-actions">
+    <button id="restart-btn" class="action-btn">
+        <span>Reiniciar</span>
+        <span class="action-circle"></span>
+    </button>
+    <button id="lobby-btn" class="action-btn">
+        <span>Lobby</span>
+        <span class="action-circle"></span>
+    </button>
+   
+</div>
+        </div>
+    </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
