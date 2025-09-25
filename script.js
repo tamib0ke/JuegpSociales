@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalTimeEl = document.getElementById('final-time');
     const restartBtn = document.getElementById('restart-btn');
     const lobbyBtn = document.getElementById('lobby-btn');
-    const saveStatusEl = document.getElementById('save-status'); // Nuevo elemento para el estado
 
     // --- Variables y Constantes del Juego ---
     let allQuestionsData = {};
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastPlayedTopic = '';
 
     const TOTAL_QUESTIONS_PER_GAME = 10;
-    const QUICK_ANSWER_THRESHOLD = 10;
+    const QUICK_ANSWER_THRESHOLD = 3;
     const MAX_BASE_SCORE = TOTAL_QUESTIONS_PER_GAME * 10;
     const MAX_SPEED_BONUS = TOTAL_QUESTIONS_PER_GAME * 2;
     const MAX_STREAK_BONUS = Math.floor(TOTAL_QUESTIONS_PER_GAME / 3) * 5;
@@ -250,49 +249,89 @@ function endGame() {
         finalTimeEl.textContent = formatTime(totalTime);
 
         const gameData = {
-            user_id: 1,
-            game_id: Date.now(),
+            user_id: 7,
+            game_id: 2,
             correct_challenges: correctAnswersCount,
             total_challenges: TOTAL_QUESTIONS_PER_GAME,
-            time_spent: totalTime,
-            final_score: score,
-            normalized_score: normalizedScore
+            time_spent: totalTime
         };
 
-        sendDataToAPI(gameData);
+        saveGameData(gameData);
     }
 
-    // --- Nueva función para enviar datos a la API ---
-    async function sendDataToAPI(data) {
-        // ⬇️⬇️⬇️ URL de tu API (DEBES REEMPLAZAR ESTO) ⬇️⬇️⬇️
-        const API_ENDPOINT = 'https://api.example.com/save-result'; // <-- Reemplaza con tu URL real
+    // --- Función para guardar datos del juego ---
+    function saveGameData(data) {
+        console.log("Datos del juego guardados:", JSON.stringify(data, null, 2));
+        
+        // Guardar en localStorage como respaldo
+        localStorage.setItem('lastGameData', JSON.stringify(data));
+        
+        showDataSendingIndicator();
+        
+        // Enviar datos a la API
+        fetch('https://puramentebackend.onrender.com/api/game-attempts/from-game', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Datos enviados exitosamente:', data);
+            // Mostrar mensaje de éxito temporalmente
+            updateLoadingText('¡Datos enviados correctamente!');
+            setTimeout(() => {
+                hideDataSendingIndicator();
+            }, 2000); // Ocultar después de 2 segundos
+        })
+        .catch(error => {
+            console.error('Error enviando datos:', error);
+            // Mostrar mensaje de error temporalmente
+            updateLoadingText('Error al enviar datos');
+            setTimeout(() => {
+                hideDataSendingIndicator();
+            }, 3000); // Ocultar después de 3 segundos
+        });
+        
+        return data; // Retorna los datos para que puedas usarlos si necesitas
+    }
 
-        saveStatusEl.textContent = 'Guardando...';
-        saveStatusEl.className = 'status-saving';
+    // --- Funciones auxiliares para mostrar el estado del envío ---
+    function showDataSendingIndicator() {
+        // Crear o mostrar un indicador de carga
+        let indicator = document.getElementById('data-sending-indicator');
+        if (!indicator) {
+            indicator = document.createElement('div');
+            indicator.id = 'data-sending-indicator';
+            indicator.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                z-index: 1000;
+                font-family: 'Quicksand', sans-serif;
+            `;
+            document.body.appendChild(indicator);
+        }
+        indicator.textContent = 'Enviando datos...';
+        indicator.style.display = 'block';
+    }
 
-        try {
-            const response = await fetch(API_ENDPOINT, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
+    function updateLoadingText(text) {
+        const indicator = document.getElementById('data-sending-indicator');
+        if (indicator) {
+            indicator.textContent = text;
+        }
+    }
 
-            if (!response.ok) {
-                // Si el servidor responde con un error (ej: 404, 500)
-                throw new Error(`Error del servidor: ${response.status}`);
-            }
-
-            const result = await response.json();
-            console.log('Datos guardados con éxito:', result);
-            saveStatusEl.textContent = 'Resultados guardados ✓';
-            saveStatusEl.className = 'status-success';
-
-        } catch (error) {
-            console.error('Error al enviar los datos a la API:', error);
-            saveStatusEl.textContent = 'Error al guardar ✗';
-            saveStatusEl.className = 'status-error';
+    function hideDataSendingIndicator() {
+        const indicator = document.getElementById('data-sending-indicator');
+        if (indicator) {
+            indicator.style.display = 'none';
         }
     }
 
