@@ -49,7 +49,7 @@ h1 { font-size: 2.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
 #instructions-screen .content-box { display: flex; align-items: center; gap: 40px; }
 .instructions-text { flex: 1; max-width: 50%; }
 .info-row { display: flex; gap: 30px; color: #6c757d; font-size: 0.9rem; margin-bottom: 2rem; }
-.instructions-image { flex: 1; max-width: 45%; height: 350px; background: url('Generated Image September 19, 2025 - 12_08PM.jpg') no-repeat center center / contain; }
+.instructions-image { flex: 1; max-width: 45%; height: 350px; }
 #start-game-btn { background-color: #000; color: #fff; border: none; border-radius: 12px; padding: 14px 30px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s ease; }
 #start-game-btn:hover { transform: translateY(-2px); }
 

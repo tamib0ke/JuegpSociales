@@ -39,17 +39,92 @@ document.addEventListener('DOMContentLoaded', () => {
     const MAX_POSSIBLE_SCORE = MAX_BASE_SCORE + MAX_SPEED_BONUS + MAX_STREAK_BONUS + COMPLETION_BONUS;
 
 
-    // --- Carga de Preguntas desde JSON ---
-    async function loadQuestions() {
-        try {
-            const response = await fetch('questions.json');
-            if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
-            allQuestionsData = await response.json();
-            showScreen('instructions-screen');
-        } catch (error) {
-            console.error("No se pudieron cargar las preguntas:", error);
-            document.body.innerHTML = "<h1>Error al cargar las preguntas.</h1>";
+    // --- Configuración de la API ---
+    const API_CONFIG = {
+        BASE_URL: 'https://puramentebackend.onrender.com/api/gamedata/category/sociales'
+    };
+
+    // --- Función para extraer user_id de la URL ---
+    function getUserIdFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('user_id');
+        return userId ? parseInt(userId) : null;
+    }
+
+    // --- Funciones de carga de mensajes ---
+    function showLoadingMessage(message) {
+        // Crear overlay de carga sin reemplazar el contenido del body
+        const loadingOverlay = document.createElement('div');
+        loadingOverlay.id = 'loading-overlay';
+        loadingOverlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Quicksand', sans-serif;
+            z-index: 9999;
+            color: white;
+        `;
+        
+        loadingOverlay.innerHTML = `
+            <div style="font-size: 24px; margin-bottom: 20px;">${message}</div>
+            <div style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            <style>
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            </style>
+        `;
+        
+        document.body.appendChild(loadingOverlay);
+    }
+
+    function hideLoadingMessage() {
+        const loadingOverlay = document.getElementById('loading-overlay');
+        if (loadingOverlay) {
+            loadingOverlay.remove();
         }
+    }
+
+    // --- Función para cargar datos desde la API ---
+    async function loadGameDataFromAPI() {
+        const response = await fetch(API_CONFIG.BASE_URL);
+        const apiData = await response.json();
+        
+        // Transformar la estructura de la API al formato que usa el juego
+        const gameTopics = {};
+        
+        apiData.data.forEach(item => {
+            // Extraer los datos de cada subcategoría
+            Object.keys(item.gamedata).forEach(subject => {
+                gameTopics[subject] = item.gamedata[subject];
+            });
+        });
+        
+        return gameTopics;
+    }
+
+    // --- Función principal para cargar datos del juego ---
+    async function loadGameData() {
+        showLoadingMessage('Cargando datos desde API...');
+        
+        const gameData = await loadGameDataFromAPI();
+        hideLoadingMessage();
+        return gameData;
+    }
+
+    // --- Carga de Preguntas (función principal) ---
+    async function loadQuestions() {
+        const apiData = await loadGameData();
+        allQuestionsData = apiData;
+        showScreen('instructions-screen');
     }
 
     // --- Funciones del Temporizador ---
@@ -248,19 +323,32 @@ function endGame() {
         finalScoreEl.textContent = `${score} / ${MAX_POSSIBLE_SCORE}`;
         finalTimeEl.textContent = formatTime(totalTime);
 
-        const gameData = {
-            user_id: 7,
-            game_id: 2,
-            correct_challenges: correctAnswersCount,
-            total_challenges: TOTAL_QUESTIONS_PER_GAME,
-            time_spent: totalTime
-        };
+        // Extraer user_id de la URL
+        const userId = getUserIdFromURL();
+        
+        if (userId) {
+            const gameData = {
+                user_id: userId,
+                game_id: 3,
+                correct_challenges: correctAnswersCount,
+                total_challenges: TOTAL_QUESTIONS_PER_GAME,
+                time_spent: totalTime
+            };
 
-        saveGameData(gameData);
+            saveGameData(gameData);
+        } else {
+            console.log('No se encontró user_id en la URL. No se enviarán datos al servidor.');
+        }
     }
 
     // --- Función para guardar datos del juego ---
     function saveGameData(data) {
+        // Verificar que exista user_id antes de proceder
+        if (!data.user_id) {
+            console.log('No hay user_id disponible. No se enviarán datos al servidor.');
+            return;
+        }
+        
         console.log("Datos del juego guardados:", JSON.stringify(data, null, 2));
         
         // Guardar en localStorage como respaldo
