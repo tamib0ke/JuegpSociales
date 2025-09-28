@@ -172,52 +172,53 @@ h1 { font-size: 2.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
     border-radius: 50%;
 }
 
-/* --- PANTALLA DE JUEGO --- */
 #game-screen {
-    width: 90%;
-    height: 90vh;
-    max-width: 1280px;
-    max-height: 720px;
-    background-color: #fff;
-    border: 2px solid #333;
-    border-radius: 24px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 .game-container-central {
     display: grid;
     width: 100%;
     height: 100%;
-    grid-template-columns: 150px 1fr 150px;
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto auto 1fr; /* Cambiado para juntar las filas de arriba */
     grid-template-areas:
         "lifelines top-info ."
         ". avatars ."
         "questions questions questions";
     align-items: center;
+    /* AJUSTE CLAVE: Reducimos el espacio vertical entre las filas principales */
+    row-gap: 1vh; 
 }
 
-.game-lifelines { grid-area: lifelines; }
-.game-top-info { grid-area: top-info; }
+.game-lifelines { grid-area: lifelines; align-self: center; }
+.game-top-info { grid-area: top-info; align-self: center; }
 .game-avatars { grid-area: avatars; }
-.main-question-container { grid-area: questions; }
+.main-question-container { grid-area: questions; align-self: end; }
 
-.game-lifelines { display: flex; flex-direction: column; gap: 10px; align-self: start; margin-top: 20px; }
-.comodin-button { background-color: #0D3361; color: #fff; border: none; border-radius: 8px; padding: 10px 15px; font-size: 0.9rem; font-weight: 700; cursor: pointer; text-align: center; transition: all 0.2s ease; }
+/* -- TAMAÑOS REDUCIDOS -- */
+.game-lifelines { display: flex; flex-direction: column; gap: 10px; }
+.comodin-button {
+    background-color: #00335F; /* Color actualizado para coincidir con tu diseño */
+    color: #fff;
+    border: none; border-radius: 8px; padding: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; text-align: center; transition: all 0.2s ease;
+}
 .comodin-button:hover:not(:disabled) { transform: translateY(-2px); }
 .comodin-button:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.game-top-info { display: flex; flex-direction: column; align-items: center; gap: 5px; align-self: start; margin-top: 20px; }
-#points-display { display: flex; gap: 6px; }
-.point-circle { width: 14px; height: 14px; border-radius: 50%; background-color: #e0e0e0; }
+.game-top-info { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+#points-display { display: flex; gap: 5px; }
+.point-circle { width: 12px; height: 12px; border-radius: 50%; background-color: #e0e0e0; }
 .point-circle.earned { background-color: #333; }
 
 .timer-label { font-size: 1rem; font-weight: 600; color: #333; }
-#timer-text { font-size: 2.5rem; font-weight: 700; color: #5EA8BE;  }
+#timer-text { font-size: 2.2rem; font-weight: 700; color: #00335F; }
 
-.game-avatars { display: flex; justify-content: center; align-items: center; gap: 40px; }
+.game-avatars { display: flex; justify-content: center; align-items: center; gap: 20px; }
 .avatar-wrapper { position: relative; }
-.hexagon-avatar { width: 90px; height: 98px; filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));}
+.hexagon-avatar { width: 80px; height: 88px; } /* Hexágonos más pequeños */
 .hexagon-blue .hexagon-fill { fill: #a5d8ff; }
 .hexagon-purple .hexagon-fill { fill: #d0bfff; }
 .hexagon-avatar .eye-outer { fill: #fff; }
@@ -227,60 +228,25 @@ h1 { font-size: 2.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
 #hint-bubble.visible { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
 #hint-bubble::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 8px; border-style: solid; border-color: #fff transparent transparent transparent; }
 
-/* ---- CAMBIOS REALIZADOS AQUÍ ---- */
 .main-question-container {
     background-color: #fff;
-    border-radius: 20px; /* Borde un poco menos redondo */
+    border-radius: 20px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    /* Padding reducido para hacerlo más compacto */
-    padding: 20px 30px; 
+    padding: 15px 25px; /* Padding reducido */
     width: 100%;
-    max-width: 700px; /* Ancho máximo reducido */
+    max-width: 650px; /* Ancho máximo reducido */
     text-align: center;
     justify-self: center;
-    align-self: end;
 }
 
-#question-text {
-    /* Fuente de la pregunta más pequeña */
-    font-size: 1.4rem; 
-    font-weight: 700;
-    color: #000;
-    margin-top: 0.5rem;
-    /* Menos espacio debajo de la pregunta */
-    margin-bottom: 1.5rem; 
-}
-
-#options-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* Menos espacio entre los botones */
-    gap: 10px; 
-    width: 100%;
-}
-
-.option-box {
-    background-color: #0D3361;
-    border: 1px solid #fff;
-    border-radius: 10px;
-    /* Padding reducido en los botones */
-    padding: 12px; 
-    /* Fuente de las opciones más pequeña */
-    font-size: 0.9rem; 
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: #f0f2f5;
-}
-/* ---- FIN DE LOS CAMBIOS ---- */
-
+#question-text { font-size: 1.2rem; font-weight: 700; color: #000; margin-top: 0.5rem; margin-bottom: 1rem; }
+#options-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+.option-box { background-color: #fff; border: 1px solid #ced4da; border-radius: 10px; padding: 10px; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .option-box:hover { transform: translateY(-2px); border-color: #000; }
 .option-prefix { font-weight: 700; color: #6c757d; }
-.option-box.selected { border-color: #0d6efd; background-color: #e7f1ff; }
-.option-box.correct { border-color: #198754; background-color: #d1e7dd; }
+.option-box.selected, .option-box.correct {
+    border-color: #00335F; /* Color actualizado para coincidir con tu diseño */
+    background-color: #e6f0fa;
+}
 .option-box.incorrect { border-color: #dc3545; background-color: #f8d7da; }
 .option-box.hidden { visibility: hidden; }
