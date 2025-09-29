@@ -35,13 +35,13 @@ body {
     border-radius: 24px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     padding: 40px;
-    max-width: 950px;
+    max-width: 850px;
     width: 100%;
 }
 .text-center { text-align: center; }
 
 /* --- ESTILOS DE TEXTO COMUNES --- */
-h1 { font-size: 2.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
+h1 { font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
 .subtitle { font-size: 1rem; font-weight: 500; color: #6c757d; margin-bottom: 0.5rem; }
 .description { font-size: 1.1rem; color: #6c757d; line-height: 1.6; margin-bottom: 2rem; }
 
@@ -73,9 +73,9 @@ h1 { font-size: 2.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
 .text-center { text-align: center; }
 
 /* Estilos de selección de tema */
-#topic-selection-screen .content-box { display: flex; flex-direction: column; justify-content: center; gap: 3rem; min-height: 480px; }
+#topic-selection-screen .content-box { display: flex; flex-direction: column; justify-content: center; gap: 3rem; min-height: 380px; }
 #topic-selection-screen .topic-header { text-align: center; }
-#topic-selection-screen .description { font-weight: 600; margin-bottom: 0; }
+#topic-selection-screen .description { font-weight: 500; margin-bottom: 0; }
 #topic-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
 .topic-button { background-color: #0C6896; color: #f0f2f5; border: none; border-radius: 8px; padding: 12px 24px; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; }
 .topic-button:hover { transform: translateY(-2px); background-color: #1ba980; }
