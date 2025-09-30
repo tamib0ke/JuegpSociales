@@ -172,25 +172,36 @@ h1 { font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
     border-radius: 50%;
 }
 
+/* --- PANTALLA DE JUEGO (AJUSTE FINAL) --- */
 #game-screen {
     background-color: transparent;
     border: none;
     box-shadow: none;
+    padding: 10px; /* Un poco de padding para que no pegue a los bordes */
 }
 
+/* AJUSTE CLAVE: Le damos un tamaño máximo para que no se estire */
 .game-container-central {
     display: grid;
     width: 100%;
     height: 100%;
+    max-width: 850px; /* Ancho máximo del contenido del juego */
+    max-height: 500px; /* Alto máximo para que quepa en la vista pequeña */
+    margin: auto; /* Esto lo centrará dentro del #game-screen */
+
+    /* Le damos un fondo y sombra para que se vea como una 'tarjeta' */
+    background-color: #e6f0fa;
+    border-radius: 20px;
+    padding: 20px;
+    
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: auto auto 1fr; /* Cambiado para juntar las filas de arriba */
+    grid-template-rows: auto auto 1fr;
     grid-template-areas:
         "lifelines top-info ."
         ". avatars ."
         "questions questions questions";
     align-items: center;
-    /* AJUSTE CLAVE: Reducimos el espacio vertical entre las filas principales */
-    row-gap: 1vh; 
+    row-gap: 1vh;
 }
 
 .game-lifelines { grid-area: lifelines; align-self: center; }
@@ -198,10 +209,9 @@ h1 { font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
 .game-avatars { grid-area: avatars; }
 .main-question-container { grid-area: questions; align-self: end; }
 
-/* -- TAMAÑOS REDUCIDOS -- */
 .game-lifelines { display: flex; flex-direction: column; gap: 10px; }
 .comodin-button {
-    background-color: #00335F; /* Color actualizado para coincidir con tu diseño */
+    background-color: #00335F;
     color: #fff;
     border: none; border-radius: 8px; padding: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; text-align: center; transition: all 0.2s ease;
 }
@@ -210,7 +220,7 @@ h1 { font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
 
 .game-top-info { display: flex; flex-direction: column; align-items: center; gap: 5px; }
 #points-display { display: flex; gap: 5px; }
-.point-circle { width: 12px; height: 12px; border-radius: 50%; background-color: #e0e0e0; }
+.point-circle { width: 12px; height: 12px; border-radius: 50%; background-color: #ccc; }
 .point-circle.earned { background-color: #333; }
 
 .timer-label { font-size: 1rem; font-weight: 600; color: #333; }
@@ -218,7 +228,7 @@ h1 { font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
 
 .game-avatars { display: flex; justify-content: center; align-items: center; gap: 20px; }
 .avatar-wrapper { position: relative; }
-.hexagon-avatar { width: 80px; height: 88px; } /* Hexágonos más pequeños */
+.hexagon-avatar { width: 80px; height: 88px; }
 .hexagon-blue .hexagon-fill { fill: #a5d8ff; }
 .hexagon-purple .hexagon-fill { fill: #d0bfff; }
 .hexagon-avatar .eye-outer { fill: #fff; }
@@ -232,9 +242,9 @@ h1 { font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    padding: 15px 25px; /* Padding reducido */
+    padding: 15px 25px;
     width: 100%;
-    max-width: 650px; /* Ancho máximo reducido */
+    max-width: 650px;
     text-align: center;
     justify-self: center;
 }
@@ -245,7 +255,7 @@ h1 { font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
 .option-box:hover { transform: translateY(-2px); border-color: #000; }
 .option-prefix { font-weight: 700; color: #6c757d; }
 .option-box.selected, .option-box.correct {
-    border-color: #00335F; /* Color actualizado para coincidir con tu diseño */
+    border-color: #00335F;
     background-color: #e6f0fa;
 }
 .option-box.incorrect { border-color: #dc3545; background-color: #f8d7da; }
