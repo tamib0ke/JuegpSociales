@@ -46,6 +46,8 @@ body {
 h1 { font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
 .subtitle { font-size: 1rem; font-weight: 500; color: #6c757d; margin-bottom: 0.5rem; }
 .description { font-size: 1.1rem; color: #6c757d; line-height: 1.6; margin-bottom: 2rem; }
+
+/* ESTILOS ORIGINALES DE INSTRUCCIONES */
 #instructions-screen .content-box { display: flex; align-items: center; gap: 40px; }
 .instructions-text { flex: 1; max-width: 50%; }
 .info-row { display: flex; gap: 30px; color: #6c757d; font-size: 0.9rem; margin-bottom: 2rem; }
@@ -89,7 +91,7 @@ h1 { font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
 .hexagon-purple .hexagon-fill { fill: #d0bfff; }
 .hexagon-avatar .eye-outer { fill: #fff; }
 .hexagon-avatar .eye-inner { fill: #495057; }
-#hint-bubble { position: absolute; bottom: 90%; left: 50%; background-color: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); width: 220px; font-size: 0.9rem; line-height: 1.5; color: #333; text-align: center; z-index: 10; opacity: 0; visibility: hidden; transform: translate(-50%, 10px); transition: all 0.3s ease-in-out; }
+#hint-bubble { position: absolute; bottom: 90%; left: 50%; transform: translate(-50%, 0); background-color: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); width: 220px; font-size: 0.9rem; line-height: 1.5; color: #333; text-align: center; z-index: 10; opacity: 0; visibility: hidden; transition: all 0.3s ease-in-out; }
 #hint-bubble.visible { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
 #hint-bubble::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 8px; border-style: solid; border-color: #fff transparent transparent transparent; }
 .main-question-container { grid-area: questions; align-self: end; background-color: #fff; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); padding: 15px 25px; width: 100%; max-width: 650px; text-align: center; justify-self: center; }
@@ -109,42 +111,113 @@ h1 { font-size: 1.5rem; font-weight: 700; color: #000000; margin-bottom: 1rem; }
 .mute-button:not(.muted) .icon-sound-off { display: none; }
 
 
-/* --- CAMBIO CLAVE 2: ESTILOS PARA PANTALLAS PEQUEÑAS (LA TV) --- */
+/* --- CAMBIOS PARA PANTALLAS PEQUEÑAS (LA TV) --- */
 /* Esta sección solo se aplica si el ancho de la pantalla es 850px o menos */
 
 @media (max-width: 850px) {
     .screen {
-        padding: 1rem; /* Menos padding */
+        padding: 1rem; /* Menos padding general */
     }
 
-    /* Hacemos que la pantalla de juego ocupe todo el espacio disponible */
+    .content-box {
+        padding: 1.5rem; /* Padding más pequeño para las cajas de contenido */
+    }
+
+    /* Reducimos fuentes para que quepan mejor en general */
+    h1 { font-size: 1.3rem; margin-bottom: 0.8rem; }
+    .subtitle { font-size: 0.9rem; }
+    .description { font-size: 0.95rem; margin-bottom: 1.5rem; }
+    #start-game-btn { padding: 12px 25px; font-size: 0.9rem; }
+    
+    /* PANTALLA DE INSTRUCCIONES: Corregimos la acumulación */
+    #instructions-screen .content-box {
+        flex-direction: column; /* Apila los elementos verticalmente */
+        text-align: center;
+        gap: 1.5rem; /* Espacio entre la imagen y el texto */
+        min-height: unset; /* Quita el min-height fijo */
+        justify-content: center;
+        align-items: center;
+    }
+    .instructions-text {
+        max-width: 100%; /* El texto ocupa todo el ancho disponible */
+    }
+    .instructions-image {
+        max-width: 70%; /* La imagen ocupa el 70% del ancho del contenedor */
+        height: auto; /* Permite que la altura se ajuste proporcionalmente */
+        order: -1; /* Mueve la imagen arriba del texto */
+        margin-bottom: 1rem; /* Espacio adicional entre imagen y texto */
+    }
+    .instructions-image img {
+        max-height: 180px; /* Limita la altura de la imagen */
+        width: auto; /* Permite que el ancho se ajuste */
+    }
+    .info-row {
+        justify-content: center; /* Centra los elementos del info-row */
+        gap: 20px;
+    }
+
+    /* PANTALLA DE SELECCIÓN DE TEMA */
+    #topic-selection-screen .content-box {
+        gap: 2rem; /* Reduce el gap para que quepa mejor */
+        min-height: 300px;
+    }
+    .topic-button {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+
+    /* PANTALLA DE JUEGO */
     .game-container-central {
         max-height: 100%;
-        padding: 1rem;
-        gap: 0.5rem;
+        padding: 0.8rem; /* Un poco menos de padding para las pantallas más pequeñas */
+        gap: 0.5rem 0.5rem; /* Espacio entre filas y columnas */
     }
 
     /* Reducimos el tamaño de los avatares */
     .hexagon-avatar {
-        width: 60px;
-        height: 66px;
+        width: 50px; /* Más pequeños aún */
+        height: 55px;
+    }
+    #hint-bubble {
+        width: 180px; /* Reducimos el ancho de la burbuja */
+        font-size: 0.8rem;
+        padding: 10px;
     }
 
-    /* Reducimos fuentes para que quepan mejor */
-    h1 { font-size: 1.3rem; }
-    #question-text { font-size: 1rem; }
-    .option-box { font-size: 0.75rem; padding: 8px; }
 
-    /* Hacemos que la pantalla de instrucciones sea vertical */
-    #instructions-screen .content-box {
-        flex-direction: column;
-        text-align: center;
+    #question-text { font-size: 0.95rem; margin: 0.3rem 0 0.8rem; }
+    .option-box { 
+        font-size: 0.7rem; 
+        padding: 6px; 
+        gap: 5px;
+        /* Aseguramos que el texto de la opción se ajuste */
+        white-space: normal;
+        flex-direction: row; /* Asegura que la letra y el texto estén en fila */
+        justify-content: flex-start; /* Alinea el contenido a la izquierda */
     }
-    .instructions-text, .instructions-image {
-        max-width: 100%;
+    .option-box .option-prefix {
+        flex-shrink: 0; /* Evita que la letra se encoja */
     }
-    .instructions-image {
-        max-height: 180px;
-        order: -1; /* Mueve la imagen arriba */
+    .option-box .option-text {
+        text-align: left;
     }
+
+    .mute-button {
+        width: 35px;
+        height: 35px;
+        padding: 5px;
+    }
+
+    /* PANTALLA DE FIN DE JUEGO */
+    .game-over-container {
+        max-width: 90%;
+        height: auto;
+        min-height: 350px;
+        aspect-ratio: unset; /* Quitamos el aspect-ratio para más flexibilidad */
+    }
+    #game-over-title { font-size: 1.6rem; }
+    .game-over-stats { font-size: 1.1rem; width: 220px; }
+    .action-btn { font-size: 1rem; gap: 10px; }
+    .action-circle { width: 25px; height: 25px; }
+
 }
