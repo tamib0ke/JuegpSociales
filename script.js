@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Configuración de la API ---
     const API_CONFIG = {
-        BASE_URL: 'https://puramentebackend.onrender.com/api/gamedata/category/sociales'
+        BASE_URL: 'https://puramentebackend.onrender.com/api/gamedata/game/3/category/sociales'
     };
 
     // MUTE: Función para reproducir sonidos solo si no está silenciado
