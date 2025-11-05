@@ -48,10 +48,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const MAX_POSSIBLE_SCORE = MAX_BASE_SCORE + MAX_SPEED_BONUS + MAX_STREAK_BONUS + COMPLETION_BONUS;
 
 
-    // --- Configuración de la API ---
-    const API_CONFIG = {
-        BASE_URL: 'https://puramentebackend.onrender.com/api/gamedata/game/3/category/sociales'
+    // --- CONFIGURACIÓN DEL JUEGO ---
+    const GAME_CONFIG = {
+      GAME_ID: 3,  // ID del juego original
+      API_BASE_URL: 'https://puramentebackend.onrender.com' // Backend producción
     };
+
+    // Variables globales para parámetros de URL
+    let currentUserId = null;
+    let sessionToken = '';
+    let subject = 'Sociales';
+
+    // Función para obtener y validar parámetros de la URL
+    function getURLParameters() {
+      const urlParams = new URLSearchParams(window.location.search);
+      currentUserId = urlParams.get('user_id') || null;
+      sessionToken = urlParams.get('session') || '';
+      subject = urlParams.get('subject') || 'Sociales';
+
+      return {
+        userId: currentUserId,
+        session: sessionToken,
+        subject: subject
+      };
+    }
+
+    // Capturar parámetros al cargar
+    getURLParameters();
 
     // MUTE: Función para reproducir sonidos solo si no está silenciado
     function playSound(audioElement) {
@@ -92,24 +115,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Función para cargar datos desde la API ---
     async function loadGameDataFromAPI() {
-        const response = await fetch(API_CONFIG.BASE_URL);
+      try {
+        if (!subject) {
+          throw new Error('Falta el parámetro requerido: subject en la URL');
+        }
+
+        let apiUrl = `${GAME_CONFIG.API_BASE_URL}/api/gamedata/game/${GAME_CONFIG.GAME_ID}/category/${encodeURIComponent(subject)}`;
+        if (sessionToken) {
+          apiUrl += `?session=${sessionToken}`;
+        }
+
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const apiData = await response.json();
-        const gameTopics = {};
-        apiData.data.forEach(item => {
-            Object.keys(item.gamedata).forEach(subject => gameTopics[subject] = item.gamedata[subject]);
-        });
-        return gameTopics;
+        if (apiData.success && apiData.data) {
+          const gameTopics = {};
+
+          apiData.data.forEach(item => {
+            if (Array.isArray(item.gamedata)) {
+              item.gamedata.forEach(gameDataItem => {
+                if (gameDataItem.title && gameDataItem.subcategoria) {
+                  const topicKey = gameDataItem.title;
+                  gameTopics[topicKey] = gameDataItem.subcategoria;
+                } else {
+                  Object.keys(gameDataItem).forEach(key => {
+                    if (Array.isArray(gameDataItem[key]) && gameDataItem[key].length > 0) {
+                      gameTopics[key] = gameDataItem[key];
+                    }
+                  });
+                }
+              });
+            } else {
+              Object.keys(item.gamedata).forEach(subcategory => {
+                gameTopics[subcategory] = item.gamedata[subcategory];
+              });
+            }
+          });
+
+          return gameTopics;
+        } else {
+          throw new Error('Respuesta de API inválida: ' + JSON.stringify(apiData));
+        }
+      } catch (error) {
+        alert(`Error al cargar los datos del juego:\n${error.message}\n\nPor favor, verifica la consola para más detalles.`);
+        return null;
+      }
     }
 
-    // --- Función principal para cargar datos del juego ---
+    // Función principal para cargar datos del juego
     async function loadGameData() {
-        showLoadingMessage('Cargando datos desde API...');
-        const gameData = await loadGameDataFromAPI();
-        hideLoadingMessage();
-        return gameData;
+      try {
+        let gameData = await loadGameDataFromAPI();
+        if (gameData && Object.keys(gameData).length > 0) {
+          return gameData;
+        } else {
+          throw new Error('No se pudieron cargar los datos del juego');
+        }
+      } catch (error) {
+        alert('Error al cargar los datos del juego. Por favor, recarga la página.');
+        return null;
+      }
     }
 
-    // --- Carga de Preguntas (función principal) ---
+    // --- Función para cargar preguntas desde el servidor ---
     async function loadQuestions() {
         allQuestionsData = await loadGameData();
         showScreen('instructions-screen');
