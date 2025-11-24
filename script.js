@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           return gameTopics;
         } else {
-          throw new Error('Respuesta de API inválida: ' + JSON.stringify(apiData));
+          throw new Error('Error: ' + JSON.stringify(apiData));
         }
       } catch (error) {
         alert(`Error al cargar los datos del juego:\n${error.message}\n\nPor favor, verifica la consola para más detalles.`);
